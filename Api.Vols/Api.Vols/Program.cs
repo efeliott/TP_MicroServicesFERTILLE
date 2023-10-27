@@ -1,6 +1,17 @@
+using Api.Vols.Datas.Context;
+using Api.Vols.Datas.Repository;
+using Api.Vols.Generals.Common;
+
 var builder = WebApplication.CreateBuilder(args);
 
+IConfiguration configuration = builder.Configuration;
+
 // Add services to the container.
+builder.Services.Configure<AppSettings>(configuration.GetSection("ConnectionStrings"));
+
+builder.Services.AddSingleton<ILiteDbContext, LiteDbContext>();
+
+builder.Services.AddTransient<IFlightRepository, FlightRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

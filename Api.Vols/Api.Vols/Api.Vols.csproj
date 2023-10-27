@@ -11,4 +11,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Datas\Api.Vols.Datas.Repository\Api.Vols.Datas.Repository.csproj" />
+  </ItemGroup>
+
 </Project>
