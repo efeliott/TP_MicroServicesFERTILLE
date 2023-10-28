@@ -21,6 +21,14 @@ namespace Api.Reservation.Controllers
             _reservationService = reservationService;
         }
 
+        // POST api/Reservations
+        [HttpPost]
+        [ProducesResponseType(typeof(Datas.Entities.Reservation), 200)]
+        public async Task<IActionResult> CreateReservationAsync([FromBody] Datas.Entities.Reservation reservation)
+        {
+            return Ok(await _reservationService.CreateReservationAsync(reservation));
+        }
+
         // GET: api/Reservations
         [HttpGet]
         [ProducesResponseType(typeof(List<Datas.Entities.Reservation>), 200)]

@@ -1,6 +1,8 @@
 ﻿using Api.Reservation.Business.Models;
+using Api.Reservation.Datas.Entities;
 using Api.Reservation.Datas.Repository;
 using Api.Reservation.Generals.Common;
+using Refit;
 
 namespace Api.Reservation.Business.Service
 {
