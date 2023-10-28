@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Api.Vols.Business.Service
+namespace Api.Reservation.Business.Service
 {
-    internal interface IFlightService
+    public interface IUtilisateurService
     {
+        // TODO
     }
 }
