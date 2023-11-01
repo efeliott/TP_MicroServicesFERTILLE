@@ -8,6 +8,6 @@ namespace Api.Reservation.Business.Service
 {
     public interface IUtilisateurService
     {
-        // TODO
+        Task<Datas.Entities.Utilisateur> CreateUtilisateurAsync(Datas.Entities.Utilisateur utilisateur);
     }
 }

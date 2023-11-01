@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Api.Reservation.Business.Service;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,6 +10,12 @@ namespace Api.Reservation.Controllers
     public class UtilisateursController : ControllerBase
     {
         // TODO
+        private readonly IUtilisateurService _utilisateurService;
+
+        public UtilisateursController(IUtilisateurService utilisateurService)
+        {
+            _utilisateurService = utilisateurService;
+        }
 
         // GET: api/<UtilisateursController>
         [HttpGet]
@@ -26,8 +33,10 @@ namespace Api.Reservation.Controllers
 
         // POST api/<UtilisateursController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        [ProducesResponseType(typeof(Datas.Entities.Utilisateur), 200)]
+        public async Task<IActionResult> CreateUtilisateurAsync([FromBody] Datas.Entities.Utilisateur utilisateur)
         {
+            return Ok(await _utilisateurService.CreateUtilisateurAsync(utilisateur));
         }
 
         // PUT api/<UtilisateursController>/5
