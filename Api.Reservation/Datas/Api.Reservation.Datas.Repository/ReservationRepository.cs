@@ -19,6 +19,7 @@ namespace Api.Reservation.Datas.Repository
             _context = context;
         }
 
+
         /// <summary>
         /// Cette méthode permet de recupérer la liste des reservations
         /// </summary>
@@ -105,6 +106,5 @@ namespace Api.Reservation.Datas.Repository
                 await _context.SaveChangesAsync();
             }
         }
-
     }
 }

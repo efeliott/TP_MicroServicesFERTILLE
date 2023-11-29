@@ -37,6 +37,42 @@ namespace Api.Reservation.Datas.Repository
             return utilisateurs;
         }
 
+        /// <summary>
+        /// Cette méthode permet de recupérer la liste des utilisateurs
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Entities.Utilisateur>> GetUtilisateurAsync()
+        {
+            return await _context.Utilisateurs
+                .ToListAsync()
+                .ConfigureAwait(false);
+        }
 
+        /// <summary>
+        /// Cette méthode permet de recupérer un utilisateur en fonction de son id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Entities.Utilisateur> GetUtilisateurByIdAsync(int id)
+        {
+            return await _context.Utilisateurs
+                .FirstOrDefaultAsync(u => u.Id == id)
+                .ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Méthode qui permet de supprimer un utilisateur en fonction de son id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task DeleteUtilisateurByIdAsync(int id)
+        {
+            var utilisateur = await _context.Utilisateurs.FindAsync(id);
+            if (utilisateur != null)
+            {
+                _context.Utilisateurs.Remove(utilisateur);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }
